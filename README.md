@@ -1,13 +1,13 @@
 <img src="logo.png" width="100px" height="100px">
 
 
-## PyPassKit
+## PyPassPlex
 ![Latest release](https://badgen.net/github/release/LukeS-05/pypasskit)
 ![Last commit](https://badgen.net/github/last-commit/LukeS-05/pypasskit)
 ![Issues](https://badgen.net/github/open-issues/LukeS-05/pypasskit)
 ![License](https://badgen.net/github/license/LukeS-05/pypasskit)
 
-PyPassKit is a Python package which generates secure and customisable passwords and passphrases.
+PyPassPlex is a Python package which generates secure and customisable passwords and passphrases.
 
 > [!NOTE]
 > This project has been built upon the core API of [my old password generator](https://github.com/LukeS-05/generate-password).

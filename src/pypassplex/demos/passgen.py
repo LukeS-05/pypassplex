@@ -1,5 +1,5 @@
 import math
-import pypasskit as ppk
+import pypassplex as ppx
 
 # USED FOR CONVERTING Y/N (YES/NO) TO BOOLEAN.
 def updateConfig(text):
@@ -11,7 +11,7 @@ def updateConfig(text):
 
 def main(): 
     # MAIN CODE
-    print(r""" ____  ____  _  __   PYPASSKIT DEMO
+    print(r""" ____  ____  _  __   PYPASSPLEX DEMO
 |  _ \|  _ \| |/ /   To learn more about this demo, go to
 | |_) | |_) | ' /    https://lukes-05.github.io/pypasskit/docs
 |  __/|  __/| . \     
@@ -35,10 +35,10 @@ ________________________________________________________________________________
 
     # ------------------------------------ THIS IS WHERE PYPASSKIT IS USED!!!
     # GENERATE PASSWORD
-    generated, pool = ppk.passgen.generate(upperletters, lowerletters, numbers, symbols, length, True)
+    generated, pool = ppx.passgen.generate(upperletters, lowerletters, numbers, symbols, length, True)
 
     # ENTROPY
-    entropy = ppk.passgen.entropy(pool, len(generated))
+    entropy = ppx.passgen.entropy(pool, len(generated))
 
     # -----------------------------------
 

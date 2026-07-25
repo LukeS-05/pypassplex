@@ -1,9 +1,9 @@
 import math
-import pypasskit as ppk
+import pypassplex as ppx
 
 def main(): 
     # MAIN CODE
-    print(r""" ____  ____  _  __   PYPASSKIT DEMO
+    print(r""" ____  ____  _  __   PYPASSPLEX DEMO
 |  _ \|  _ \| |/ /   To learn more about this demo, go to
 | |_) | |_) | ' /    https://lukes-05.github.io/pypasskit/docs
 |  __/|  __/| . \     
@@ -24,8 +24,8 @@ ________________________________________________________________________________
 
     # ------------------------------------ THIS IS WHERE PYPASSKIT IS USED!!!
     # GENERATE PASSWORD
-    generated = ppk.phrasegen.generate(length=length, delimiter=delimiter)
-    entropy = ppk.phrasegen.entropy(length=length)
+    generated = ppx.phrasegen.generate(length=length, delimiter=delimiter)
+    entropy = ppx.phrasegen.entropy(length=length)
     # -----------------------------------
 
     # PRINT PASSWORD AND ENTROPY

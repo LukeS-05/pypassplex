@@ -1,4 +1,4 @@
-#  ____  ____  _  __   To learn more about the PyPassKit source code, please go to
+#  ____  ____  _  __   To learn more about the pypassplex source code, please go to
 # |  _ \|  _ \| |/ /   https://lukes-05.github.io/pypasskit/source
 # | |_) | |_) | ' /    
 # |  __/|  __/| . \    Copyright (C) 2026 LukeS-05 - This library is licensed under the 
@@ -9,7 +9,7 @@ import secrets, math
 from importlib.metadata import version
 import importlib.resources as resources
 
-__version__ = version("pypasskit") 
+__version__ = version("pypassplex") 
 __all__ = ["generate","entropy"]
 
 # 0.7.1 - NEW WORDSLIST FUNCTION TO REPLACE IDENTICAL CODE IN TWO FUNCTIONS
@@ -20,7 +20,7 @@ def wordsList(file=None, wordlist=None):
     # RULE 2 - IF NEITHER IS PASSED, USE EFF WORDS LIST
     if not file and not wordlist: 
         try:
-            with resources.files("pypasskit").joinpath("eff-words.txt").open("r", encoding="utf-8") as f:
+            with resources.files("pypassplex").joinpath("eff-words.txt").open("r", encoding="utf-8") as f:
                 words = f.read().splitlines()
         except Exception as e:
             raise RuntimeError(f"[219] (phrasegen@PPK v{__version__}) {e}")

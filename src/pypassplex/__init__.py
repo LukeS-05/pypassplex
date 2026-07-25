@@ -1,4 +1,4 @@
-#  ____  ____  _  __   To learn more about the PyPassKit source code, please go to
+#  ____  ____  _  __   To learn more about the PyPassPlex source code, please go to
 # |  _ \|  _ \| |/ /   https://lukes-05.github.io/pypasskit/source
 # | |_) | |_) | ' /    
 # |  __/|  __/| . \    Copyright (C) 2026 LukeS-05 - This library is licensed under the 

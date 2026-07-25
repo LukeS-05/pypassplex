@@ -1,4 +1,4 @@
-#  ____  ____  _  __   To learn more about the PyPassKit source code, please go to
+#  ____  ____  _  __   To learn more about the pypassplex source code, please go to
 # |  _ \|  _ \| |/ /   https://lukes-05.github.io/pypasskit/source
 # | |_) | |_) | ' /    
 # |  __/|  __/| . \    Copyright (C) 2026 LukeS-05 - This library is licensed under the 
@@ -9,7 +9,7 @@ import string
 from . import passgen
 from importlib.metadata import version
 
-__version__ = version("pypasskit") 
+__version__ = version("pypassplex") 
 __all__ = ["generate", "entropy"]
 
 def generate(length=6):

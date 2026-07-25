@@ -3,8 +3,8 @@ requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pypasskit"
-version = "0.7.1"
+name = "pypassplex"
+version = "0.7.4"
 description = ""
 readme = "README.md"
 requires-python = ">=3.8"
@@ -12,14 +12,14 @@ dependencies = []
 authors = [{ name = "LukeS-05" }]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pypasskit"]
+packages = ["src/pypassplex"]
 
 [tool.hatch.build.targets.wheel.sources]
 "src" = ""
 
 [tool.hatch.build.targets.wheel.force-include]
-"src/pypasskit/eff-words.txt" = "pypasskit/eff-words.txt"
+"src/pypassplex/eff-words.txt" = "pypassplex/eff-words.txt"
 
 [project.scripts]
-ppkdemo-passgen = "pypasskit.demos.passgen:main"
-ppkdemo-phrasegen = "pypasskit.demos.phrasegen:main"
+ppxdemo-passgen = "pypassplex.demos.passgen:main"
+ppxdemo-phrasegen = "pypassplex.demos.phrasegen:main"
