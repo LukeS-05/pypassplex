@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report any bugs to help improve PyPassKit.
+about: Report any bugs to help improve PyPassPlex.
 title: "[BUG]: "
 labels: bug
 assignees: LukeS-05
@@ -15,9 +15,9 @@ assignees: LukeS-05
 
 **Component / Module**
 Which part of the library is affected? (Check all that apply)
-- [] `ppk.passgen`
-- [] `ppk.phrasegen`
-- [] `ppk.pingen`
+- [] `ppx.passgen`
+- [] `ppx.phrasegen`
+- [] `ppx.pingen`
 - [] Other / Installation issue
 
 **To Reproduce**
@@ -25,7 +25,7 @@ Which part of the library is affected? (Check all that apply)
 
 ```python
 # Copy and paste your code here if applicable
-import pypasskit as ppk
+import pypassplex as ppx
 ```
 **Expected behavior**
 > A clear and concise description of what you expected to happen.
@@ -38,7 +38,7 @@ Python Version: [e.g. 3.10, 3.12]
 
 PyPassKit Version: [e.g. 0.6.0]
 
-Installation Method: [e.g. pip install pypasskit, editable source pip install -e .]
+Installation Method: [e.g. pip install pypassplex, editable source pip install -e .]
 
 **Additional context**
 
