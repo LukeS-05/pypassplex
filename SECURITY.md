@@ -1,7 +1,7 @@
-## Security Policy (v1.1)
-PyPassKit is a Python package which generates secure and customisable passwords and passphrases, with zero dependencies.
+## Security Policy (v1.2)
+PyPassPlex is a Python package which generates secure and customisable passwords and passphrases, with zero dependencies.
 
-This policy is effective from 16 July 2026. For more information, please read **01 - Updates**.
+This policy is effective from 05 August 2026. For more information, please read **01 - Updates**.
 
 Before using the library in your project, please read the security policy carefully.
 
@@ -9,9 +9,10 @@ Before using the library in your project, please read the security policy carefu
 | V | Date | Changes |
 | :- | :- | :- |
 | v1.0 | 28 June 2026 | Added the date effective and section 01. |
-| v1.1 | 16 July 2026 | Updated introduction, added sections 05 and 06. |  
+| v1.1 | 16 July 2026 | Updated introduction, added sections 05 and 06. | 
+| v1.2 | 05 August 2026 | Updated name from PyPassKit to PyPassPlex in all sections.<br>Updated Section 01 to remove reference to 'Notifications' button. |
 
-You will be notified of updates to this policy through the [project website](https://lukes-05.github.io/pypasskit/features) by clicking the 'Notifications' button.
+You will be notified of updates to this policy through a banner announcement on the [project website](https://lukes-05.github.io/pypassplex/features).
 
 ### 02 - Reporting a Vulnerability
 > [!WARNING]
@@ -27,10 +28,10 @@ To help us fix the issue quickly, please include:
 - The specific versions of the software affected.
 
 ### 04 - Legacy Releases
-Before reporting a vulnerability, please ensure that you are running the latest release of PyPassKit.
+Before reporting a vulnerability, please ensure that you are running the latest release of PyPassPlex.
 
 > [!WARNING]
-> It is **your** responsibility to keep PyPassKit up to date.
+> It is **your** responsibility to keep PyPassPlex up to date.
 
 Legacy releases will not be supported and will not receive backported patches.
 
@@ -40,7 +41,7 @@ This library is licensed under the MIT license, and is provided **"AS IS", WITHO
 While I do my best to maintain the security and integrity of this library, you use the library at your own risk. I am not liable for data loss, damages or security breaches resulting from its use.
 
 ### 06 - Dependencies
-PyPassKit is distributed without any third-party dependencies and will never use external dependencies. This is because security is paramount as opposed to adding more complex features that require additional packages.
+PyPassPlex is distributed without any third-party dependencies and will never use external dependencies. This is because security is paramount as opposed to adding more complex features that require additional packages.
 
 This reduces the impact of supply-chain vulnerabilities. Supply chain attacks could compromise the integrity of the project and this has been mitigated by using zero third party dependencies.
 
