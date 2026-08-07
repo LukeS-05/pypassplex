@@ -3,13 +3,13 @@ import pypassplex as ppx
 
 def main(): 
     # MAIN CODE
-    print(r""" ____  ____  _  __   PYPASSPLEX DEMO
-|  _ \|  _ \| |/ /   To learn more about this demo, go to
-| |_) | |_) | ' /    https://lukes-05.github.io/pypasskit/docs
-|  __/|  __/| . \     
-|_|   |_|   |_|\_\   Copyright (C) 2026 LukeS-05 - MIT License.
+    print(r""" ____  ______  __   PYPASSPLEX DEMO
+|  _ \|  _ \ \/ /   To learn more about this demo, go to
+| |_) | |_) \  /    https://lukes-05.github.io/pypassplex/help
+|  __/|  __//  \ 
+|_|   |_|  /_/\_\   Copyright (C) 2026 LukeS-05 - MIT License.
 ______________________________________________________________________________________
-    """)
+""")
 
     # SETTINGS
     try:
