@@ -1,8 +1,8 @@
-#  ____  ____  _  __   To learn more about the pypassplex source code, please go to
-# |  _ \|  _ \| |/ /   https://lukes-05.github.io/pypasskit/source
-# | |_) | |_) | ' /    
-# |  __/|  __/| . \    Copyright (C) 2026 LukeS-05 - This library is licensed under the 
-# |_|   |_|   |_|\_\   MIT License 
+#  ____  ______  __    To contribute to PyPassPlex, please go to
+# |  _ \|  _ \ \/ /    https://lukes-05.github.io/pypassplex/contribute
+# | |_) | |_) \  /     
+# |  __/|  __//  \     Copyright (C) 2026 LukeS-05 - This library is licensed under the
+# |_|   |_|  /_/\_\    MIT License
 # ______________________________________________________________________________________
 
 import string
