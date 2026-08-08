@@ -15,9 +15,8 @@ def main():
 |  _ \|  _ \ \/ /   To learn more about this demo, go to
 | |_) | |_) \  /    https://lukes-05.github.io/pypassplex/help
 |  __/|  __//  \ 
-|_|   |_|  /_/\_\   Copyright (C) 2026 LukeS-05 - MIT License.
-______________________________________________________________________________________
-    """)
+|_|   |_|  /_/\_\   Copyright (C) 2026 LukeS-05 - MIT License.""")
+    print("-"*80)
 
     # SETTINGS
     upperletters = updateConfig("Uppercase letters? ")
@@ -31,7 +30,7 @@ ________________________________________________________________________________
         length = 12
         print("Length = 12")
 
-    print("-"*90)
+    print("-"*80)
 
     # ------------------------------------ THIS IS WHERE PYPASSKIT IS USED!!!
     # GENERATE PASSWORD
