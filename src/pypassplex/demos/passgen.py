@@ -34,10 +34,10 @@ def main():
 
     # ------------------------------------ THIS IS WHERE PYPASSKIT IS USED!!!
     # GENERATE PASSWORD
-    generated, pool = ppx.passgen.generate(upperletters, lowerletters, numbers, symbols, length, True)
+    generated = ppx.passgen.generate(upperletters, lowerletters, numbers, symbols, length)
 
     # ENTROPY
-    entropy = ppx.passgen.entropy(pool, len(generated))
+    entropy = ppx.passgen.entropy(upperletters, lowerletters, numbers, symbols, length=len(generated))
 
     # -----------------------------------
 
