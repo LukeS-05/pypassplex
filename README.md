@@ -1,5 +1,7 @@
 <img src="logo.png" width="100px" height="100px">
 
+> [!WARNING]
+> **IMPORTANT** - the `returnPool` parameter in `passgen.generate()` is now deprecated. A migration guide will be published prior to the stable release of 0.9.0
 
 ## PyPassPlex
 ![Latest release](https://badgen.net/github/release/LukeS-05/pypassplex)
