@@ -2,7 +2,7 @@
 name: Beta bug report v0.9.0
 about: Report any bugs with the beta to help improve PyPassPlex.
 title: "[BETA 0.9.0]: "
-labels: bug, beta-09
+labels: "bug,beta-09"
 assignees: LukeS-05
 
 ---
