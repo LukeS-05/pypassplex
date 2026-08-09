@@ -35,36 +35,40 @@ def validateParameters(upper=True, lower=True, numbers=True, symbols=True, lengt
     if length < selected: raise ValueError(f"[203] (passgen@PPX v{__version__}) - Length must be greater than or equal to the number of character types selected ({selected}).")
     if selected == 0: raise ValueError(f"[204] (passgen@PPX v{__version__}) - You must select at least one type of character.")
     
-def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, returnPool=False):
-    # 1 - DATA TYPE VALIDATION
+def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, pool=None):
     if not(isinstance(length, int)) or isinstance(length, bool): 
         raise TypeError(f"[202] (passgen@PPX v{__version__}) - Password length must be given as an integer.")
 
-    # 2 - BUILD CHARACTER POOL
-    characters = buildPool(upper, lower, numbers, symbols)
-    # 3 - VALIDATION
-    validateParameters(upper, lower, numbers, symbols, length)
-    
-    # 4 - INITIALISE CHARSLIST
+    # INITIALISE CHARSLIST
     charslist = []
 
-    # 5 - GUARANTEE EACH CHARACTER TYPE APPEARS IN THE PASSWORD
-    if upper: charslist.append(secrets.choice(string.ascii_uppercase))
-    if lower: charslist.append(secrets.choice(string.ascii_lowercase))
-    if numbers: charslist.append(secrets.choice(string.digits))
-    if symbols: charslist.append(secrets.choice(string.punctuation))
+    if pool is not None:
+        if not(isinstance(pool, str)) or pool == "":
+            raise TypeError(f"[209] (passgen@PPX v{__version__}) - Character pool must be given as a non-empty string.")
+        characters = pool
+        
+    else:
+        # BUILD CHARACTER POOL
+        characters = buildPool(upper, lower, numbers, symbols)
+        # VALIDATION
+        validateParameters(upper, lower, numbers, symbols, length)
+        # GUARANTEE EACH CHARACTER TYPE APPEARS IN THE PASSWORD
+        if upper: charslist.append(secrets.choice(string.ascii_uppercase))
+        if lower: charslist.append(secrets.choice(string.ascii_lowercase))
+        if numbers: charslist.append(secrets.choice(string.digits))
+        if symbols: charslist.append(secrets.choice(string.punctuation))
+    
 
-    # 6 - CHOOSE EACH CHARACTER
+    # CHOOSE EACH CHARACTER
     while len(charslist) < length:
         # use secrets module to choose from character pool
         charslist.append(secrets.choice(characters))
 
-    # 7 - SHUFFLE PASSWORD SO REQUIRED CHARS AREN'T ALWAYS AT BEGINNING (i.e. Aa1@)
+    # SHUFFLE PASSWORD SO REQUIRED CHARS AREN'T ALWAYS AT BEGINNING (i.e. Aa1@)
     secrets.SystemRandom().shuffle(charslist)
     password = "".join(charslist)
 
-    # 8 - RETURN PASSWORD (AND POOL if returnPool)
-    if returnPool: return password, characters
+    # RETURN PASSWORD
     return password
 
 # UPGRADED ENTROPY FUNCTION IN 0.9.0

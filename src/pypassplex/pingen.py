@@ -13,7 +13,7 @@ __version__ = version("pypassplex")
 __all__ = ["generate", "entropy"]
 
 def generate(length=6):
-    pincode= passgen.generate(upper=False, lower=False, numbers=True, symbols=False, length=length, returnPool=False)
+    pincode= passgen.generate(upper=False, lower=False, numbers=True, symbols=False, length=length)
     return pincode
     
 def entropy(length=6):
