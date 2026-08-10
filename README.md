@@ -16,7 +16,7 @@ PyPassPlex is a Python package which generates secure and customisable passwords
 
 ⚙️ Customisation features allowing you to generate passwords fitting a certain criteria.
 
-🧠 A guarantee that all your chosen character types are included.
+🧠 A guarantee that all your chosen character types are included.*1
 
 🖋️ Calculates password entropy.
 
@@ -28,3 +28,6 @@ PyPassPlex is a Python package which generates secure and customisable passwords
 
 ## License
 The code is licensed under the MIT license. You can find a copy of this available [here](https://github.com/LukeS-05/pypassplex/blob/main/LICENSE).
+
+## Footnotes
+*1 - this logic only applies if using the pool provided by the Python `string` module, customised with `upper`, `lower`, `numbers` and `symbols` boolean arguments. This does not apply if you pass a custom pool.
