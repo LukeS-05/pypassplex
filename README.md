@@ -1,7 +1,4 @@
-<img src="logo.png" width="100px" height="100px">
-
-> [!WARNING]
-> **IMPORTANT** - the `returnPool` parameter in `passgen.generate()` is now deprecated. A migration guide will be published prior to the stable release of 0.9.0
+<img src="logo.png" width="250px" height="250px">
 
 ## PyPassPlex
 ![Latest release](https://badgen.net/github/release/LukeS-05/pypassplex)
@@ -10,6 +7,9 @@
 ![License](https://badgen.net/github/license/LukeS-05/pypassplex)
 
 PyPassPlex is a Python package which generates secure and customisable passwords and passphrases.
+
+> [!WARNING]
+> **IMPORTANT** - the `returnPool` parameter in `passgen.generate()` is now deprecated. A migration guide will be published prior to the stable release of 0.9.0
 
 > [!NOTE]
 > This project has been built upon the core API of [my old password generator](https://github.com/LukeS-05/generate-password).
