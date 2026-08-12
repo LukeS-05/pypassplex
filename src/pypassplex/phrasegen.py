@@ -40,10 +40,18 @@ def wordsList(file=None, wordlist=None):
     # 2 - REMOVE SPACES FROM WORD LIST
     words = [w for w in words if w.strip()]
 
+    words = list(dict.fromkeys(words))
+
+    if not(words):
+        raise ValueError(f"[215] (phrasegen@PPX v{__version__}) - Wordlist is empty")
+
     # 3 - RETURN WORDS
     return words
 
 def generate(file=None, wordlist=None, length=4, delimiter="-", case="lower"):
+    if length <= 0:
+        raise ValueError(f"[208] (phrasegen@PPX v{__version__}) - Length must be greater than 0.")
+    
     words = wordsList(file, wordlist)
 
     if case not in ["lower", "upper", "title"]:
@@ -63,7 +71,10 @@ def generate(file=None, wordlist=None, length=4, delimiter="-", case="lower"):
         
     return passphrase
 
-def entropy(file=None, wordlist=None, length=0):
+def entropy(file=None, wordlist=None, length=4):
+    if length <= 0:
+        raise ValueError(f"[208] (phrasegen@PPX v{__version__}) - Length must be greater than 0.")
+    
     words = wordsList(file, wordlist)
         
     phraseentropy = length * math.log2(len(set(words))) # 0.7.1 - DON'T ALLOW DUPLICATE WORDS

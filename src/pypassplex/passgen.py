@@ -34,40 +34,60 @@ def validateParameters(upper=True, lower=True, numbers=True, symbols=True, lengt
     # VALIDATE LENGTH AND SELECTED CATEGORIES
     if length < selected: raise ValueError(f"[203] (passgen@PPX v{__version__}) - Length must be greater than or equal to the number of character types selected ({selected}).")
     if selected == 0: raise ValueError(f"[204] (passgen@PPX v{__version__}) - You must select at least one type of character.")
-    
+
+def satisfiesRequirements(upper, lower, numbers, symbols, candidate):
+    hasupper = False
+    haslower = False
+    hasnumbers = False
+    hassymbols = False
+
+    for i in candidate:
+        if i in string.ascii_uppercase: hasupper = True
+        elif i in string.ascii_lowercase: haslower = True
+        elif i in string.digits: hasnumbers = True
+        elif i in string.punctuation: hassymbols = True
+
+    if upper and not(hasupper): return False
+    if lower and not(haslower): return False
+    if numbers and not(hasnumbers): return False
+    if symbols and not(hassymbols): return False
+
+    return True
+
+def generateCandidate(pool, length):
+    charslist = []
+    # CHOOSE EACH CHARACTER
+    while len(charslist) < length:
+        # use secrets module to choose from character pool
+        charslist.append(secrets.choice(pool))
+
+    candidate = "".join(charslist)
+
+    return candidate
+
 def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, pool=None):
     if not(isinstance(length, int)) or isinstance(length, bool): 
         raise TypeError(f"[202] (passgen@PPX v{__version__}) - Password length must be given as an integer.")
-
-    # INITIALISE CHARSLIST
-    charslist = []
-
+    if length <= 0:
+        raise ValueError(f"[208] (passgen@PPX v{__version__}) - Length must be greater than 0.")
+    
     if pool is not None:
         if not(isinstance(pool, str)) or pool == "":
             raise TypeError(f"[209] (passgen@PPX v{__version__}) - Character pool must be given as a non-empty string.")
-        characters = pool
-        
+        characters = "".join(dict.fromkeys(pool))
     else:
         # BUILD CHARACTER POOL
         characters = buildPool(upper, lower, numbers, symbols)
         # VALIDATION
         validateParameters(upper, lower, numbers, symbols, length)
-        # GUARANTEE EACH CHARACTER TYPE APPEARS IN THE PASSWORD
-        if upper: charslist.append(secrets.choice(string.ascii_uppercase))
-        if lower: charslist.append(secrets.choice(string.ascii_lowercase))
-        if numbers: charslist.append(secrets.choice(string.digits))
-        if symbols: charslist.append(secrets.choice(string.punctuation))
+
+    password = ""
+    if pool is not None:
+        password = generateCandidate(pool=characters, length=length)
+    else:
+        while not(satisfiesRequirements(upper, lower, numbers, symbols, password)):
+            password = generateCandidate(pool=characters, length=length)
     
-
-    # CHOOSE EACH CHARACTER
-    while len(charslist) < length:
-        # use secrets module to choose from character pool
-        charslist.append(secrets.choice(characters))
-
-    # SHUFFLE PASSWORD SO REQUIRED CHARS AREN'T ALWAYS AT BEGINNING (i.e. Aa1@)
-    secrets.SystemRandom().shuffle(charslist)
-    password = "".join(charslist)
-
     # RETURN PASSWORD
     return password
 
@@ -77,15 +97,15 @@ def entropy(upper=True, lower=True, numbers=True, symbols=True, length=10, pool=
         raise TypeError(f"[206] (passgen@PPX v{__version__}) - Password length must be given as an integer.")
 
     # HANDLED NEGATIVE LENGTHS (0.7.1)
-    if length < 0:
-        raise ValueError(f"[208] (passgen@PPX v{__version__}) - Length must not be a negative number.")
+    if length <= 0:
+        raise ValueError(f"[208] (passgen@PPX v{__version__}) - Length must be greater than 0.")
 
     # OLD ENTROPY LOGIC
     if pool is not None:
         # DATA TYPE VALIDATION
         if not(isinstance(pool, str)) or pool == "":
             raise TypeError(f"[209] (passgen@PPX v{__version__}) - Character pool must be given as a non-empty string.")
-        characters = pool
+        characters = "".join(dict.fromkeys(pool))
     # NEW LOGIC (SIMILAR TO GENERATE())
     else:
         characters = buildPool(upper, lower, numbers, symbols)
