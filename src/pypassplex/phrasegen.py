@@ -8,6 +8,8 @@
 import secrets, math
 from importlib.metadata import version
 import importlib.resources as resources
+from .errors import error
+
 
 __version__ = version("pypassplex") 
 __all__ = ["generate","entropy"]
@@ -16,14 +18,14 @@ __all__ = ["generate","entropy"]
 def wordsList(file=None, wordlist=None):
     # 1 - GENERATE WORDLIST
     # RULE 1 - IF BOTH ARE PASSED, RAISE VALUEERROR
-    if file and wordlist: raise ValueError(f"[212] (phrasegen@PPX v{__version__}) - You must pass EITHER file or wordlist as argument\nBoth have been passed.")
+    if file and wordlist: error(ValueError, 212, "phrasegen")
     # RULE 2 - IF NEITHER IS PASSED, USE EFF WORDS LIST
     if not file and not wordlist: 
         try:
             with resources.files("pypassplex").joinpath("eff-words.txt").open("r", encoding="utf-8") as f:
                 words = f.read().splitlines()
         except Exception as e:
-            raise RuntimeError(f"[219] (phrasegen@PPX v{__version__}) {e}")
+            error(RuntimeError, 219, "phrasegen", e)
     # RULE 3 - IF ONLY FILE IS PASSED, USE FILE
     elif file:
         try:
@@ -31,11 +33,11 @@ def wordsList(file=None, wordlist=None):
             with open(file, "r", encoding="utf-8") as f:
                 words = f.read().splitlines()
         except FileNotFoundError as e:
-            raise FileNotFoundError(f"[211] (phrasegen@PPX v{__version__}) - File does not exist. - {e}")
+            error(FileNotFoundError, 212, "phrasegen", e)
     # RULE 4 - IF ONLY WORD LIST IS PASSED, USE WORD LIST
     elif wordlist:
         if not(isinstance(wordlist, list)):
-            raise ValueError(f"[214] (phrasegen@PPX v{__version__}) - Wordlist must be a lists")
+            error(ValueError, 214, "phrasegen")
         words = wordlist
     # 2 - REMOVE SPACES FROM WORD LIST
     words = [w for w in words if w.strip()]
@@ -43,19 +45,19 @@ def wordsList(file=None, wordlist=None):
     words = list(dict.fromkeys(words))
 
     if not(words):
-        raise ValueError(f"[215] (phrasegen@PPX v{__version__}) - Wordlist is empty")
+        error(ValueError, 215, "phrasegen")
 
     # 3 - RETURN WORDS
     return words
 
 def generate(file=None, wordlist=None, length=4, delimiter="-", case="lower"):
     if length <= 0:
-        raise ValueError(f"[208] (phrasegen@PPX v{__version__}) - Length must be greater than 0.")
+        error(ValueError, 208, "phrasegen")
     
     words = wordsList(file, wordlist)
 
     if case not in ["lower", "upper", "title"]:
-        raise ValueError(f"[218] (phrasegen@PPX v{__version__}) - Case must be lower, upper or title.")
+        error(ValueError, 218, "phrasegen")
     
     passphrase = "" # nosec 
     for i in range(length):
@@ -73,7 +75,7 @@ def generate(file=None, wordlist=None, length=4, delimiter="-", case="lower"):
 
 def entropy(file=None, wordlist=None, length=4):
     if length <= 0:
-        raise ValueError(f"[208] (phrasegen@PPX v{__version__}) - Length must be greater than 0.")
+        error(ValueError, 208, "phrasegen")
     
     words = wordsList(file, wordlist)
         

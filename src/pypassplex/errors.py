@@ -10,6 +10,7 @@ descriptions = [
     [208, "Length must be greater than 0."],
     [209, "Character pool must be given as a non-empty string."],
     [211, "File does not exist."],
+    [212, "You must pass EITHER file or wordlist as argument\nBoth have been passed."],
     [214, "Wordlist must be a list"],
     [215, "Wordlist is empty"],
     [218, "Case must be lower, upper or title"],
@@ -18,10 +19,10 @@ descriptions = [
     [237, "Length must be greater than or equal to 1 for a PIN."]
 ]
 
-def error(type=ValueError, code=208, module="phrasegen"):
+def error(type=ValueError, code=208, module="phrasegen", info=""):
     desc = "unknown"
     for i in range(0, len(descriptions)):
         if descriptions[i][0] == code:
             desc = descriptions[i][1]
     
-    raise type(f"[{code}] ({module}@PPX{__version__}) - {desc}")
+    raise type(f"[{code}] ({module}@PPX{__version__}) - {desc} {info}")
