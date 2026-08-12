@@ -43,15 +43,20 @@ def wordsList(file=None, wordlist=None):
     # 3 - RETURN WORDS
     return words
 
-def generate(file=None, wordlist=None, length=4, delimiter="-"):
-    # 1 - GENERATE WORDSLIST
+def generate(file=None, wordlist=None, length=4, delimiter="-", case="lower"):
     words = wordsList(file, wordlist)
+
+    if case not in ["lower", "upper", "title"]:
+        raise ValueError(f"[218] (phrasegen@PPX v{__version__}) - Case must be lower, upper or title.")
     
     passphrase = "" # nosec 
     for i in range(length):
         chosen = secrets.choice(words)
         
-        passphrase += chosen
+        if case=="lower": passphrase += chosen.lower()
+        elif case == "upper": passphrase += chosen.upper()
+        elif case == "title": passphrase += chosen.title()
+
         # to prevent delimiter at the end
         if i != (length-1):
             passphrase += delimiter
@@ -61,5 +66,5 @@ def generate(file=None, wordlist=None, length=4, delimiter="-"):
 def entropy(file=None, wordlist=None, length=0):
     words = wordsList(file, wordlist)
         
-    entropy = length * math.log2(len(set(words))) # 0.7.1 - DON'T ALLOW DUPLICATE WORDS
-    return entropy
+    phraseentropy = length * math.log2(len(set(words))) # 0.7.1 - DON'T ALLOW DUPLICATE WORDS
+    return phraseentropy
