@@ -7,6 +7,7 @@
 
 import secrets, string, math
 from importlib.metadata import version
+from .errors import error
 
 __version__ = version("pypassplex")
 __all__ = ["generate", "entropy"]
@@ -14,7 +15,7 @@ __all__ = ["generate", "entropy"]
 def buildPool(upper=True, lower=True, numbers=True, symbols=True):
     # 1 - CHECK BOOLEAN VALUES HAVE BEEN PASSED
     if not(isinstance(upper, bool)) or not(isinstance(lower, bool)) or not(isinstance(numbers, bool)) or not(isinstance(symbols, bool)):
-        raise TypeError(f"[201] (passgen@PPX v{__version__}) - Character pool config (e.g. upper) must be given as booleans.")
+        error(TypeError, 201, "passgen")
 
     # 2 - INITIALISE CHARACTERS VARIABLE
     characters = ""
@@ -32,8 +33,8 @@ def validateParameters(upper=True, lower=True, numbers=True, symbols=True, lengt
     selected = sum([upper, lower, numbers, symbols])
                 
     # VALIDATE LENGTH AND SELECTED CATEGORIES
-    if length < selected: raise ValueError(f"[203] (passgen@PPX v{__version__}) - Length must be greater than or equal to the number of character types selected ({selected}).")
-    if selected == 0: raise ValueError(f"[204] (passgen@PPX v{__version__}) - You must select at least one type of character.")
+    error(ValueError, 203, "passgen")
+    error(ValueError, 204, "passgen")
 
 def satisfiesRequirements(upper, lower, numbers, symbols, candidate):
     hasupper = False
@@ -67,13 +68,12 @@ def generateCandidate(pool, length):
 
 def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, pool=None):
     if not(isinstance(length, int)) or isinstance(length, bool): 
-        raise TypeError(f"[202] (passgen@PPX v{__version__}) - Password length must be given as an integer.")
+        error(TypeError, 202, "passgen")
     if length <= 0:
-        raise ValueError(f"[208] (passgen@PPX v{__version__}) - Length must be greater than 0.")
-    
+        error(ValueError, 208, "passgen")
     if pool is not None:
         if not(isinstance(pool, str)) or pool == "":
-            raise TypeError(f"[209] (passgen@PPX v{__version__}) - Character pool must be given as a non-empty string.")
+            error(TypeError, 209, "passgen")
         characters = "".join(dict.fromkeys(pool))
     else:
         # BUILD CHARACTER POOL
@@ -94,17 +94,17 @@ def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, pool
 # UPGRADED ENTROPY FUNCTION IN 0.9.0
 def entropy(upper=True, lower=True, numbers=True, symbols=True, length=10, pool=None):
     if not(isinstance(length, int)) or isinstance(length, bool): # 0.9.0 - handled booleans passed to length parameter
-        raise TypeError(f"[206] (passgen@PPX v{__version__}) - Password length must be given as an integer.")
+        error(TypeError, 206, "passgen")
 
     # HANDLED NEGATIVE LENGTHS (0.7.1)
     if length <= 0:
-        raise ValueError(f"[208] (passgen@PPX v{__version__}) - Length must be greater than 0.")
+        error(ValueError, 208, "passgen")
 
     # OLD ENTROPY LOGIC
     if pool is not None:
         # DATA TYPE VALIDATION
         if not(isinstance(pool, str)) or pool == "":
-            raise TypeError(f"[209] (passgen@PPX v{__version__}) - Character pool must be given as a non-empty string.")
+            error(TypeError, 209, "passgen")
         characters = "".join(dict.fromkeys(pool))
     # NEW LOGIC (SIMILAR TO GENERATE())
     else:
