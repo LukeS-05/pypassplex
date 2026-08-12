@@ -8,6 +8,7 @@
 import string
 from . import passgen
 from importlib.metadata import version
+from .errors import error
 
 __version__ = version("pypassplex") 
 __all__ = ["generate", "entropy"]
@@ -18,9 +19,9 @@ def generate(length=6):
     
 def entropy(length=6):
     if not(isinstance(length, int)):
-        raise TypeError(f"[236] (pingen@PPX v{__version__}) - PIN length must be given as an integer.")
+        error(TypeError, 236, "pingen")
     
     if length < 1:
-        raise ValueError(f"[237] (pingen@PPX v{__version__}) - Length must be greater than or equal to 1 for a PIN.")
+        error(ValueError, 237, "pingen")
     entropy = passgen.entropy(pool=string.digits, length=length)
     return entropy
