@@ -13,6 +13,7 @@ descriptions = [
     [212, "You must pass EITHER file or wordlist as argument\nBoth have been passed."],
     [214, "Wordlist must be a list"],
     [215, "Wordlist is empty"],
+    [216, "Elements of the wordlist must be string values."],
     [218, "Case must be lower, upper or title"],
     [219, "Runtime Error"],
     [236, "PIN length must be given as an integer."],

@@ -39,6 +39,8 @@ def wordsList(file=None, wordlist=None):
     # 2 - REMOVE SPACES FROM WORD LIST
     cleanedwords = []
     for i in words:
+        if not(isinstance(i, str)): # fix for AttributeError
+            error(ValueError, 216, "phrasegen")
         if i.strip(): cleanedwords.append(i.strip())
     
     words = list(dict.fromkeys(cleanedwords))
