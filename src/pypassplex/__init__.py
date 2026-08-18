@@ -9,5 +9,5 @@ from . import phrasegen
 from . import passgen
 from . import pingen
 
-__version__ = "0.9.0b2"
+__version__ = "0.9.0"
 __author__ = "LukeS-05"
