@@ -33,8 +33,8 @@ def validateParameters(upper=True, lower=True, numbers=True, symbols=True, lengt
     selected = sum([upper, lower, numbers, symbols])
                 
     # VALIDATE LENGTH AND SELECTED CATEGORIES
-    error(ValueError, 203, "passgen")
-    error(ValueError, 204, "passgen")
+    if length < selected: error(ValueError, 203, "passgen")
+    if selected == 0: error(ValueError, 204, "passgen")
 
 def satisfiesRequirements(upper, lower, numbers, symbols, candidate):
     hasupper = False
