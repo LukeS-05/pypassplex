@@ -21,10 +21,14 @@ def buildPool(upper=True, lower=True, numbers=True, symbols=True):
     characters = ""
 
     # 3 - APPEND TO POOL
-    if upper: characters += string.ascii_uppercase
-    if lower: characters += string.ascii_lowercase
-    if numbers: characters += string.digits
-    if symbols: characters += string.punctuation
+    if upper: 
+        characters += string.ascii_uppercase
+    if lower: 
+        characters += string.ascii_lowercase
+    if numbers: 
+        characters += string.digits
+    if symbols: 
+        characters += string.punctuation
 
     # 4 - RETURN POOL
     return characters
@@ -33,8 +37,10 @@ def validateParameters(upper=True, lower=True, numbers=True, symbols=True, lengt
     selected = sum([upper, lower, numbers, symbols])
                 
     # VALIDATE LENGTH AND SELECTED CATEGORIES
-    if length < selected: error(ValueError, 203, "passgen")
-    if selected == 0: error(ValueError, 204, "passgen")
+    if length < selected: 
+        error(ValueError, 203, "passgen")
+    if selected == 0: 
+        error(ValueError, 204, "passgen")
 
 def satisfiesRequirements(upper, lower, numbers, symbols, candidate):
     hasupper = False
@@ -43,15 +49,23 @@ def satisfiesRequirements(upper, lower, numbers, symbols, candidate):
     hassymbols = False
 
     for i in candidate:
-        if i in string.ascii_uppercase: hasupper = True
-        elif i in string.ascii_lowercase: haslower = True
-        elif i in string.digits: hasnumbers = True
-        elif i in string.punctuation: hassymbols = True
+        if i in string.ascii_uppercase: 
+            hasupper = True
+        elif i in string.ascii_lowercase: 
+            haslower = True
+        elif i in string.digits: 
+            hasnumbers = True
+        elif i in string.punctuation: 
+            hassymbols = True
 
-    if upper and not(hasupper): return False
-    if lower and not(haslower): return False
-    if numbers and not(hasnumbers): return False
-    if symbols and not(hassymbols): return False
+    if upper and not(hasupper): 
+        return False
+    if lower and not(haslower): 
+        return False
+    if numbers and not(hasnumbers): 
+        return False
+    if symbols and not(hassymbols): 
+        return False
 
     return True
 
