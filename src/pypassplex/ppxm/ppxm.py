@@ -8,8 +8,23 @@ if ppxver[-2] == "b":
 else:
     beta = False
 
-print(f""" ____  ______  __
+print(fr""" ____  ______  __
 |  _ \|  _ \ \/ /   PyPassPlex Manager
 | |_) | |_) \  /    - Current version: {ppxver}
 |  __/|  __//  \    - Beta release: {beta}
-|_|   |_|  /_/\_\ """)
+|_|   |_|  /_/\_\ 
+---------------------------------------------------""")
+
+choice = int(input("""
+GETTING STARTED
+1 - PyPassPlex demo
+
+DOCUMENTATION
+2 - View documentation
+3 - View security policy
+
+DEBUG
+4 - Report an issue
+5 - PyPassPlex test script
+
+Please choose an option (1-5)"""))
