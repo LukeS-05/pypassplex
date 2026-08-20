@@ -23,3 +23,4 @@ packages = ["src/pypassplex"]
 [project.scripts]
 ppxdemo-passgen = "pypassplex.demos.passgen:main"
 ppxdemo-phrasegen = "pypassplex.demos.phrasegen:main"
+ppxm = "pypassplex.ppxm.ppxm:main"
