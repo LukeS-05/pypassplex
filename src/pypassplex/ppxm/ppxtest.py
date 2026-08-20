@@ -16,11 +16,12 @@ def test(function, arguments, id, shouldPass):
 
     print("-"*50)
 
-# test all character sets disabled.
-test(ppx.passgen.generate, {
-    "upper": False,
-    "lower": False,
-    "symbols": False,
-    "numbers": False,
-    "length": 10
-}, 102, False)
+def fullTest():
+    # test all character sets disabled.
+    test(ppx.passgen.generate, {
+        "upper": False,
+        "lower": False,
+        "symbols": False,
+        "numbers": False,
+        "length": 10
+    }, 102, False)
