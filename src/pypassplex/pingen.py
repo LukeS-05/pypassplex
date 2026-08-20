@@ -13,15 +13,19 @@ from .errors import error
 __version__ = version("pypassplex") 
 __all__ = ["generate", "entropy"]
 
+def validateLength(length=6):
+    if not(isinstance(length, int)):
+        error(TypeError, 236, "pingen")
+        
+    if length < 1:
+        error(ValueError, 237, "pingen")
+
 def generate(length=6):
+    validateLength(length)
     pincode= passgen.generate(pool=string.digits, length=length)
     return pincode
     
 def entropy(length=6):
-    if not(isinstance(length, int)):
-        error(TypeError, 236, "pingen")
-    
-    if length < 1:
-        error(ValueError, 237, "pingen")
+    validateLength(length)
     entropy = passgen.entropy(pool=string.digits, length=length)
     return entropy
