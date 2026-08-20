@@ -18,7 +18,10 @@ def test(function, arguments, id, shouldPass):
     print("-"*50)
     time.sleep(0.5)
 
-def fullTest():
+def initTest():
+    passgenTest()
+    
+def passgenTest():
     print("Testing PyPassPlex... (passgen module)")
     # test all character sets disabled.
     test(ppx.passgen.generate, {

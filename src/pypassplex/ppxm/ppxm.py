@@ -1,7 +1,7 @@
 import pypassplex as ppx
 from importlib.metadata import version
 from pypassplex.ppxm.demos import passGenDemo, phraseGenDemo
-from pypassplex.ppxm.ppxtest import fullTest
+from pypassplex.ppxm.ppxtest import initTest
 import webbrowser
 import os
 import subprocess
@@ -62,7 +62,7 @@ def main():
             case 5:
                 webbrowser.open("https://lukes-05.github.io/pypassplex/contribute")
             case 6:
-                fullTest()
+                initTest()
             case 7:
                 raise SystemExit
             case _:
