@@ -1,4 +1,5 @@
 import pypassplex as ppx
+import time
 
 def test(function, arguments, id, shouldPass):
     try:
@@ -15,8 +16,10 @@ def test(function, arguments, id, shouldPass):
         print(f"Test ID {id} was not successful - {error}\nshouldPass = {shouldPass} and executed without error = {executed}")
 
     print("-"*50)
+    time.sleep(0.5)
 
 def fullTest():
+    print("Testing PyPassPlex... (passgen module)")
     # test all character sets disabled.
     test(ppx.passgen.generate, {
         "upper": False,
@@ -25,3 +28,23 @@ def fullTest():
         "numbers": False,
         "length": 10
     }, 102, False)
+
+    # invalid pool data type
+    test(ppx.passgen.generate, {
+        "pool": 19894383,
+        "length": 10
+    }, 103, False)
+
+    # invalid pool data type (with bool)
+    test(ppx.passgen.generate, {
+        "pool": True,
+        "length": 10
+    }, 104, False)
+
+    # invalid character toggle data type
+    test(ppx.passgen.generate, {
+        "upper": 213,
+        "length": 10
+    }, 105, False)
+
+    input("Test ended. Press any key to continue")

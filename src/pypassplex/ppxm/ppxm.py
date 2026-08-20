@@ -3,16 +3,28 @@ from importlib.metadata import version
 from pypassplex.ppxm.demos import passGenDemo, phraseGenDemo
 from pypassplex.ppxm.ppxtest import fullTest
 import webbrowser
+import os
+import subprocess
 
 ppxver = version("pypassplex")
 
-if ppxver[-2] == "b":
+if "b" in ppxver:
     beta = True
 else:
     beta = False
 
+def clear():
+    try:
+        if os.name == "nt":
+            subprocess.run("cls", shell=True)
+        else:
+            subprocess.check_call('clear', shell=True)
+    except Exception as e:
+        print(f"ppxm failed to clear the screen. {e}")
+
 def main():
     while True:
+        clear()
         print("┌" + "─"*50 + "┐")
         print("│ PyPassPlex Manager                               │")
         print("└" + "─"*50 + "┘")
@@ -35,9 +47,9 @@ def main():
 """)
 
         choice = 0
-        while choice > 7 or choice < 1:
-            choice = int(input("Please choose an option (1-7)"))
+        choice = int(input("Please choose an option (1-7)"))
 
+        clear()
         match choice:
             case 1:
                 passGenDemo()
@@ -53,6 +65,8 @@ def main():
                 fullTest()
             case 7:
                 raise SystemExit
+            case _:
+                input(f"{choice} is not in the range of 1-7. Press ENTER to retry.")
 
 if __name__ == "__main__":
     main()
