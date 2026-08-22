@@ -46,8 +46,13 @@ def main():
 │ 7 - Quit
 """)
 
-        choice = 0
-        choice = int(input("Please choose an option (1-7)"))
+        while True:
+            choice = 0
+            try:
+                choice = int(input("Please choose an option (1-7) "))
+                break
+            except ValueError:
+                pass
 
         clear()
         match choice:

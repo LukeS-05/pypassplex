@@ -1,6 +1,13 @@
 import pypassplex as ppx
 import time
 
+def strToBool(text):
+    while True:
+        var = input(f"{text} (yes / no): ").lower().strip()
+        if var == "": continue # if no input
+        elif var[0] == "y": return True # if yes
+        elif var[0] == "n": return False # if no
+
 def test(function, arguments, id, shouldPass):
     try:
         function(**arguments)
@@ -19,7 +26,20 @@ def test(function, arguments, id, shouldPass):
     time.sleep(0.5)
 
 def initTest():
-    passgenTest()
+    print("┌" + "─"*50 + "┐")
+    print("│ PyPassPlex TEST SCRIPT                           │")
+    print("└" + "─"*50 + "┘")
+    passgen = strToBool("Test passgen module?")
+    pingen = strToBool("Test pingen module?")
+    phrasegen = strToBool("Test phrasegen module?")
+    if passgen:
+        passgenTest()
+    if pingen:
+        pingenTest()
+    if phrasegen:
+        phrasegenTest()
+
+    input("Tests ended. Press any key to continue")
     
 def passgenTest():
     print("Testing PyPassPlex... (passgen module)")
@@ -38,7 +58,7 @@ def passgenTest():
         "length": 10
     }, 103, False)
 
-    # invalid pool data type (with bool)
+    # invalid pool data type (with bool) 
     test(ppx.passgen.generate, {
         "pool": True,
         "length": 10
@@ -50,4 +70,26 @@ def passgenTest():
         "length": 10
     }, 105, False)
 
-    input("Test ended. Press any key to continue")
+    # length is too small
+    test(ppx.passgen.generate, {
+        # by default, upper, lower, numbers and symbols are all true.
+        "length": 2
+    }, 106, False)
+
+    # invalid data type for length
+    test(ppx.passgen.generate, {
+        
+        "length": "one"
+    }, 107, False)
+
+    input("PASSGEN TEST ENDED")
+
+def pingenTest():
+    print("Not implemented")
+
+    input("PINGEN TEST ENDED")
+
+def phrasegenTest():
+    print("Not implemented")
+
+    input("PHRASEGEN TEST ENDED")
